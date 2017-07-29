@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "./node_modules/.bin/webpack --config webpack.config.js"
+    "start": "webpack-dev-server --config webpack.config.js --open",
+    "build": "webpack --config webpack.config.js",
+    "build watch": "webpack --config webpack.config.js --watch",
+    "server:dev": "webpack-dev-server --config webpack.config.js --open"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +19,7 @@
     "expose-loader": "^0.7.3",
     "ts-loader": "^2.3.1",
     "typescript": "^2.4.2",
-    "webpack": "^3.4.0"
+    "webpack": "^3.4.0",
+    "webpack-dev-server": "^2.6.1"
   }
 }
