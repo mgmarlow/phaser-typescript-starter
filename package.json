@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --config webpack.config.js --open",
+    "start": "npm run build && npm run server:dev",
     "build": "webpack --config webpack.config.js",
-    "build watch": "webpack --config webpack.config.js --watch",
+    "watch": "webpack --config webpack.config.js --watch",
     "server:dev": "webpack-dev-server --config webpack.config.js --open"
   },
   "author": "",
@@ -16,6 +16,7 @@
     "phaser-ce": "^2.8.3"
   },
   "devDependencies": {
+    "clean-webpack-plugin": "^0.1.16",
     "expose-loader": "^0.7.3",
     "ts-loader": "^2.3.1",
     "typescript": "^2.4.2",

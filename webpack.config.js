@@ -1,4 +1,5 @@
 const path = require('path');
+const cleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   entry: './src/main.ts',
@@ -21,9 +22,14 @@ module.exports = {
       pixi: path.join(__dirname, 'node_modules/phaser-ce/build/custom/pixi.js'),
       phaser: path.join(__dirname, 'node_modules/phaser-ce/build/custom/phaser-split.js'),
       p2: path.join(__dirname, 'node_modules/phaser-ce/build/custom/p2.js'),
-      assets: path.join(__dirname, 'assets/')
+      // assets: path.join(__dirname, 'assets/')
     }
   },
+  // plugins: [
+  //   new cleanWebpackPlugin([
+  //     path.join(__dirname, 'build')
+  //   ])
+  // ],
   output: {
     filename: 'build/bundle.js',
     path: __dirname
@@ -34,8 +40,8 @@ module.exports = {
     port: 9000,
     inline: true,
     watchOptions: {
-      aggregateTimeout: 300,
-      poll: true,
+      // aggregateTimeout: 300,
+      // poll: true,
       ignored: /node_modules/
     }
   }
