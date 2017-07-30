@@ -6,8 +6,8 @@ export class Game extends Phaser.State {
     private map: Map;
     private layer: Phaser.TilemapLayer;
     private player: Player;
-    private cursors: Phaser.CursorKeys;
-    private jumpButton: Phaser.Key;
+    private movementKeys: Phaser.Key[];
+    private shootingKeys: Phaser.CursorKeys;
 
     create() {
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -23,12 +23,21 @@ export class Game extends Phaser.State {
         this.game.physics.arcade.gravity.y = 250;
         this.player = new Player(this.game, 32, 32);
 
-        this.cursors = this.game.input.keyboard.createCursorKeys();
-        this.jumpButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+        this.movementKeys = this.initializeMovementKeys();
+        this.shootingKeys = this.game.input.keyboard.createCursorKeys();
     }
 
     update() {
         this.game.physics.arcade.collide(this.player, this.layer);
-        this.player.updateSelf(this.cursors);
+        this.player.updateSelf(this.movementKeys, this.shootingKeys);
+    }
+
+    private initializeMovementKeys() {
+        return [
+            this.game.input.keyboard.addKey(Phaser.Keyboard.W),
+            this.game.input.keyboard.addKey(Phaser.Keyboard.A),
+            this.game.input.keyboard.addKey(Phaser.Keyboard.S),
+            this.game.input.keyboard.addKey(Phaser.Keyboard.D)
+        ];
     }
 }

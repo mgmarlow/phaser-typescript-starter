@@ -18,13 +18,23 @@ export class Player extends Phaser.Sprite {
         game.add.existing(this);
     }
 
-    updateSelf(cursors: Phaser.CursorKeys) {
+    updateSelf(movementKeys: Phaser.Key[], shootingCursors: Phaser.CursorKeys) {
+        this.handleMovement(movementKeys);
+        this.handleShooting(shootingCursors);
+    }
+
+    private handleShooting(shootingCursors: Phaser.CursorKeys) {
+
+    }
+
+    private handleMovement(movementKeys: Phaser.Key[]) {
+        const [ W, A, S, D ] = movementKeys;
         this.body.velocity.x = 0;
 
-        if (cursors.left.isDown) {
+        if (A.isDown) {
             this.body.velocity.x = -150;
             this.setAnimation('left');
-        } else if (cursors.right.isDown) {
+        } else if (D.isDown) {
             this.body.velocity.x = 150;
             this.setAnimation('right');
         } else {
