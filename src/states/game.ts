@@ -1,8 +1,9 @@
 import { Player } from '../entities/player';
+import { Map } from '../entities/map';
 
 export class Game extends Phaser.State {
     private bg: Phaser.TileSprite;
-    private map: Phaser.Tilemap;
+    private map: Map;
     private layer: Phaser.TilemapLayer;
     private player: Player;
     private cursors: Phaser.CursorKeys;
@@ -10,12 +11,11 @@ export class Game extends Phaser.State {
 
     create() {
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
+
         this.bg = this.game.add.tileSprite(0, 0, 800, 600, 'background');
         this.bg.fixedToCamera = true;
 
-        this.map = this.game.add.tilemap('level1');
-        this.map.addTilesetImage('tiles-1');
-        this.map.setCollisionByExclusion([13, 14, 15, 16, 46, 47, 48, 49, 50, 51]);
+        this.map = new Map(this.game, 'level1', 'tiles-1');
 
         this.layer = this.map.createLayer('Tile Layer 1');
         this.layer.resizeWorld();
