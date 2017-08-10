@@ -1,4 +1,3 @@
-# Slip and Slide
+# Phaser Typescript Starter
 
-An experimental 2D-sidescroller where the player glides across platforms to build momentum while
-defeating enemies to gather score.
+A starter kit for using Phaser with Typescript and Webpack.
